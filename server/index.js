@@ -16,8 +16,7 @@ const PORT = process.env.PORT || 3033
 app.use(express.static(path.resolve(__dirname, "./client/build")))
 app.use(cors())
 
-mongoose.connect(
-    process.env.MONGODB_CONNECTION_STRING, {
+mongoose.connect(DB_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }, 
