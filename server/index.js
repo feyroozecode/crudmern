@@ -4,7 +4,6 @@ const cors = require('cors')
 const FoodModel = require('./models/Food')
 const path = require('path')
 const bodyPArser = require('body-parser')
-const path =require('path')
 require("dotenv").config()
 
 const app = express()
@@ -45,7 +44,8 @@ app.post('/insert', async(req, res)=>{
 })
 
 app.get("", function(request, response){
-    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
+    //response.sendFile(path.resolve(__dirname, "./client/build/index", "index.html"))
+  response.send('Work')  
 })
 
 app.get('/read', async(req, res)=>{
@@ -64,7 +64,7 @@ app.put('/update', async(req, res) => {
     const id = req.body.id;
 
     try{
-        await FoodModel.findById(id, (err, updatedFood) =>{
+        await FoodModel.findById(id, (err, updatedFood) => {
             updatedFood.foodName = newFoodName,
             updatedFood.save();
             res.send('Update sucessfully') 
